@@ -1,0 +1,77 @@
+// ==========================================
+// PADDLE YARD - SCSS MIXINS
+// ==========================================
+
+// Responsive Breakpoints
+@mixin screen($size) {
+    @if $size == mobile {
+        @media (max-width: 480px) { @content; }
+    }
+    @else if $size == tablet {
+        @media (max-width: 768px) { @content; }
+    }
+    @else if $size == desktop {
+        @media (max-width: 1024px) { @content; }
+    }
+    @else if $size == xl {
+        @media (min-width: 1200px) { @content; }
+    }
+}
+
+// Flexbox Center Helper
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Card Container Helper (modern, elegant)
+@mixin card-surface {
+    background: $background-2;
+    border-radius: $radius-lg;
+    box-shadow: $shadow;
+    border: 1px solid $primary-border-soft;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, $primary-border, transparent);
+        opacity: 0.3;
+    }
+}
+
+// Button Base Helper (modern, polished)
+@mixin btn-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    font-family: $font-sans;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: all $transition-normal;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    will-change: transform, box-shadow, background;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
